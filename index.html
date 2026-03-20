@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Eid Mubarak Wishes</title>
+<style>
+body {
+  background-image: url('mosque.jpg');
+  background-size: cover;
+  background-position: center;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  margin: 10% auto;
+}
+h1 {
+  font-size: 50px;
+  text-shadow: 2px 2px 4px #000;
+}
+p {
+  font-size: 20px;
+  text-shadow: 2px 2px 4px #000;
+}
+input[type="text"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+}
+.button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+.button:hover {
+  background-color: #3e8e41;
+}
+#wish {
+  font-size: 30px;
+  margin-top: 20px;
+  display: none;
+}
+</style>
+</head>
+<body>
+<audio id="background-music" autoplay loop>
+  <source src="islamic-music.mp3" type="audio/mpeg">
+</audio>
+<div class="container">
+<h1>Eid Mubarak Wishes</h1>
+<p>Enter name for best wishes:</p>
+<input type="text" id="name" placeholder="Enter name">
+<button class="button" onclick="showWish()">Send Wishes</button>
+<div id="wish"></div>
+<canvas id="fireworks" style="display: none;"></canvas>
+</div>
+
+<script>
+function showWish() {
+  var name = document.getElementById('name').value;
+  var wish = document.getElementById('wish');
+  wish.style.display = 'block';
+  wish.innerHTML = 'Eid Mubarak, ' + name + '!';
+  document.getElementById('fireworks').style.display = 'block';
+  startFireworks();
+}
+
+function startFireworks() {
+  var canvas = document.getElementById('fireworks');
+  var ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  
+  // Fireworks animation code (simplified)
+  for (var i = 0; i < 100; i++) {
+    var x = Math.random() * canvas.width;
+    var y = Math.random() * canvas.height;
+    var radius = Math.random() * 5;
+    ctx.fillStyle = 'rgb(' + Math.random() * 255 + ',' + Math.random() * 255 + ',' + Math.random() * 255 + ')';
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+}
+</script>
+</body>
+</html>
